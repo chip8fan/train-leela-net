@@ -31,5 +31,6 @@ if os.path.isdir("supervised-0"):
 if os.path.isdir("kb1-64x6"):
     shutil.rmtree("kb1-64x6")
 os.system(f"trainingdata-tool -chunks-per-file 1 -files-per-dir {sys.maxsize} '{file_name}'")
+os.system(f"jja make --output \"{file_name.replace('.pgn', '.bin')}\" --min-games 10 \"{file_name}\"")
 os.chdir("lczero-training/tf")
-os.system(f"python3 train.py --cfg configs/example.yaml --output /Users/me/Downloads/chess-engine/{file_name.split()[0]}.txt")
+os.system(f"python3 train.py --cfg configs/example.yaml --output {os.getcwd()}/{file_name.split()[0]}.txt")
